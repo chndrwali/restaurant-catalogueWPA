@@ -1,0 +1,66 @@
+{
+    "id": "Restaurant-catalogue-jayaapps-pwa-1",
+    "start_url": "../../src/templates/index.html",
+    "name": "Restaurant Catalogue Jaya Apps",
+    "short_name": "Jaya Apps",
+    "description": "Web ini untuk melihat dan mengetahui Restaurant terbaik di indonesia,Nantikan info terbaru dari web ini",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#00adb5",
+    "icons": [
+      {
+        "src": "/icons/icon-72x72.png",
+        "sizes": "72x72",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/icons/icon-96x96.png",
+        "sizes": "96x96",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/icons/icon-128x128.png",
+        "sizes": "128x128",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/icons/icon-144x144.png",
+        "sizes": "144x144",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/icons/icon-152x152.png",
+        "sizes": "152x152",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/icons/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/icons/icon-384x384.png",
+        "sizes": "384x384",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/icons/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "/icons/maskable_icon.png",
+        "sizes": "130x130",
+        "type": "image/png",
+        "purpose": "maskable"
+      }
+    ]
+  }
