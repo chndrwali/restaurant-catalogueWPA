@@ -11,8 +11,8 @@ Scenario('Menambah Ulasan Customer', async ({ I }) => {
   I.click(locate('.see-detail-link a').first());
   I.amOnPage('/#/detail/');
   I.seeElement('.review-form');
-  I.fillField('name', 'Andra');
-  I.fillField('review', 'Andra');
+  I.fillField('name', 'Candra');
+  I.fillField('review', 'Candra');
   I.click('.reviews-form-submit');
-  I.see('Andra');
+  I.see('Candra');
 });

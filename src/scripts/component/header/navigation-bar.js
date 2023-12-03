@@ -11,8 +11,8 @@ class NavigationBar extends HTMLElement {
     <nav>
         <div class="menu-mobile">
           <div>
-            <img src="${Logo}" alt="Andra Food Logo" class="logo-image">
-            <a href="/" class="logo-font"> Andra Food </a>
+            <img src="${Logo}" alt="Candra Food Logo" class="logo-image">
+            <a href="/" class="logo-font"> Candra Food </a>
           </div>
 
           <div class="menu-container">
@@ -31,7 +31,7 @@ class NavigationBar extends HTMLElement {
           <li class="nav-item"><a href="#/favorite">Favorite</a></li>
           <li class="nav-item">
             <a
-              href="https://www.linkedin.com/in/andra-syuryahman-687aa4173/"
+              href="https://www.linkedin.com/in/chndrwali/"
               target="_blank"
               rel="noopener noreferrer"
               >About</a

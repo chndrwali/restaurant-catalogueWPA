@@ -11,11 +11,11 @@ class FooterAja extends HTMLElement {
 <footer>
   <div>
     <p>
-      &copy; Submission Front End Web Expert, Andra Syuryahman
+      &copy; Submission Front End Web Expert, Candra Wali Sanjaya
     </p>
     <div>
       <a
-        href="/"
+        href="https://github.com/chndrwali/restaurant-catalogueWPA"
         target="_blank"
         rel="noreferrer"
         title="View On Github"
