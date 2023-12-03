@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #1b1a17;
+}
+/* skip */
+.skip-link {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 20px;
+  left: 10px;
+}
