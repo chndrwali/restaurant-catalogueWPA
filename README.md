@@ -1,20 +1,23 @@
 # Dicoding Submission ke 3 dari kelas Menjadi Front End Web Expert
 Web ini untuk syarat lulus pada kelas Menjadi Front End Expert di Dicoding Indonesia
 
-**CARA INSTALASI**
+<h1 align=center>Candra Food | <a href="https://candrafood-pwa.vercel.app/">Demo</a></h1>
 
- 1. Jalankan perintah
+**Dicoding Submission ke 3 dari kelas Menjadi Front End Web Expert**.  
+Web ini untuk syarat lulus pada kelas Menjadi Front End Expert di Dicoding Indonesia
 
-    npm install
+---
+## Cara Menjalankan 📥
 
- 2. Menjalankan aplikasi menggunakan webpack production
+Untuk menjalankan aplikasi di *Local Environment* Anda, cukup lakukan langkah-langkah ini:
 
-    npm run build
+- Clone Repository ini.
+- Masuk ke direktori project.
+- Install package yang dibutuhkan **`npm install`**.
+- Jalankan **`npm run start-web`** untuk menjalankan aplikasi di *Development Mode*.
+- Buka browser Anda dengan alamat **`http://localhost:9003`** atau Di Jaringan Anda (IPv4) **`http://AlamatIP:9003`**.
 
- 3. Atau menggunakan webpack development
- 
-    npm run start-web
-
+---
 
 **KRITERIA SUBMISSION**
 
