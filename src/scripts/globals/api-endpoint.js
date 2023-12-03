@@ -1,9 +1,9 @@
-import CONFIG from '../globals/config';
+import CONFIG from './config';
 
 const API_ENDPOINT = {
-  LIST_RESTO: `${CONFIG.BASE_URL}/list`,
-  DETAIL_RESTO: (id) => `${CONFIG.BASE_URL}/detail/${id}`,
-  POST_REVIEW: `${CONFIG.BASE_URL}/review`,
+  LIST: `${CONFIG.BASE_URL}/list?language=${CONFIG.DEFAULT_LANGUAGE}&page=1`,
+  DETAIL: (id) => `${CONFIG.BASE_URL}/detail/${id}`,
+  REVIEW: `${CONFIG.BASE_URL}/review`,
 };
 
 export default API_ENDPOINT;

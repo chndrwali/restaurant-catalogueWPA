@@ -22,7 +22,7 @@ const Home = {
     </picture>
     <div tabindex="0" class="banner__text">
     <h2 class="banner__title">
-      Selamat datang di Andra Food
+      Selamat datang di Candra Food
     </h2>
     <p class="banner__subtitle">Restoran kami menawarkan lebih dari sekedar makanan enak</p>
     </div>

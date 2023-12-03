@@ -1,12 +1,12 @@
 {
-    "id": "Restaurant-catalogue-jayaapps-pwa-1",
-    "start_url": "../../src/templates/index.html",
-    "name": "Restaurant Catalogue Jaya Apps",
-    "short_name": "Jaya Apps",
-    "description": "Web ini untuk melihat dan mengetahui Restaurant terbaik di indonesia,Nantikan info terbaru dari web ini",
+    "id": "andra-food-pwa-1",
+    "start_url": "./index.html",
+    "name": "Andra Food",
+    "short_name": "Andra Food",
+    "description": "Explore Restaurant For You",
     "display": "standalone",
-    "background_color": "#FFFFFF",
-    "theme_color": "#00adb5",
+    "background_color": "#292828",
+    "theme_color": "#f1eb90",
     "icons": [
       {
         "src": "/icons/icon-72x72.png",
@@ -55,12 +55,6 @@
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "any"
-      },
-      {
-        "src": "/icons/maskable_icon.png",
-        "sizes": "130x130",
-        "type": "image/png",
-        "purpose": "maskable"
       }
     ]
   }
