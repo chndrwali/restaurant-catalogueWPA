@@ -1,6 +1,3 @@
-# Dicoding Submission ke 3 dari kelas Menjadi Front End Web Expert
-Web ini untuk syarat lulus pada kelas Menjadi Front End Expert di Dicoding Indonesia
-
 <h1 align=center>Candra Food | <a href="https://candrafood-pwa.vercel.app/">Demo</a></h1>
 
 **Dicoding Submission ke 3 dari kelas Menjadi Front End Web Expert**.  
