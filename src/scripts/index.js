@@ -1,26 +1,38 @@
 /* eslint-disable no-unused-vars */
 import 'regenerator-runtime';
-import '../styles/style.css';
+/* CSS */
+import '../styles/main.css';
+import '../styles/header.css';
+import '../styles/footer.css';
+import '../styles/banner.css';
 import '../styles/responsive.css';
-import App from './views/app.js';
+import '../styles/restaurant.css';
+/* close CSS */
+import App from './views/app';
 import swRegister from './utils/sw-register';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-import '../scripts/views/component/jumbotron-bg.js';
-import '../scripts/views/component/header-brand.js';
-import '../scripts/views/component/footer-goks.js';
 
-const app = new App({
-  button: document.querySelector('#hamburgerButton'),
-  drawer: document.querySelector('#navigationDrawer'),
-  content: document.querySelector('#mainContent'),
-});
+/* Component */
+import './component/header/navigation-bar';
+import './component/footer/footer-aja';
 
-window.addEventListener('hashchange', () => {
-  app.renderPage();
-});
+const START = 10;
+const NUMBER_OF_IMAGES = 100;
 
-window.addEventListener('load', () => {
-  app.renderPage();
-  swRegister();
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new App({
+    button: document.querySelector('.menu'),
+    drawer: document.querySelector('.nav-list'),
+    content: document.querySelector('#mainContent'),
+  });
+
+  window.addEventListener('hashchange', () => {
+    app.renderPage();
+  });
+
+  window.addEventListener('load', () => {
+    app.renderPage();
+    swRegister();
+  });
 });
