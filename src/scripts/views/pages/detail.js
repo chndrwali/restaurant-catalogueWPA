@@ -1,60 +1,84 @@
+import RestaurantDataSource from '../../data/restaurantdata-source';
+import { createRestaurantDetailTemplate } from '../templates/template-creator';
 import UrlParser from '../../routes/url-parser';
-import RestoDataSource from '../../data/restodata-source';
-import { createDetailRestoTemplate, createReviewTemplate, createReviewFormTemplate } from '../templates/template-creator';
 import LikeButtonPresenter from '../../utils/like-button-presenter';
-import FavoriteRestoIdb from '../../data/favorite-resto-idb';
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 
 const Detail = {
   async render() {
     return `
-        <div class="detail" tabindex="0" role="resto detail"></div>
-        <div id="likeButtonContainer"></div>
+    <div id="restaurant" class="restaurant"></div>
+    <div id="likeButtonContainer"></div>
       `;
   },
 
   async afterRender() {
+    // Fungsi ini akan dipanggil setelah render()
     const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const detail = await RestoDataSource.getDetailResto(url.id);
-    const restoDetail = document.querySelector('.detail');
-    restoDetail.innerHTML = createDetailRestoTemplate(detail);
-    restoDetail.innerHTML += `
-      <div class="review" aria-label="resto reviews" role="review">
-      </div>
-    `;
+    const restaurant = await RestaurantDataSource.detailRestaurant(url.id);
 
-    const restoReview = document.querySelector('.review');
-    detail.customerReviews.forEach((review) => {
-      restoReview.innerHTML += createReviewTemplate(review);
-    });
-    restoReview.innerHTML += createReviewFormTemplate();
-
-    const reviewForm = document.getElementById('form-review');
-    reviewForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const reviewerName = document.getElementById('inputName').value;
-      const reviewText = document.getElementById('inputReview').value;
-      const reviewData = {
-        id: url.id,
-        name: reviewerName,
-        review: reviewText,
-      };
-
-      await RestoDataSource.addReview(reviewData);
-
-      await this.afterRender();
-    });
+    const restaurantContainer = document.querySelector('#restaurant');
+    restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
 
     LikeButtonPresenter.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
-      resto: {
-        id: detail.id,
-        name: detail.name,
-        city: detail.city,
-        description: detail.description,
-        pictureId: detail.pictureId,
-        rating: detail.rating,
+      favoriteRestaurants: FavoriteRestaurantIdb,
+      restaurant: {
+        id: restaurant.id,
+        name: restaurant.name,
+        description: restaurant.description,
+        pictureId: restaurant.pictureId,
+        rating: restaurant.rating,
+        city: restaurant.city,
       },
-      likeResto: FavoriteRestoIdb,
+    });
+
+    this._renderCustomerReviews(restaurant.customerReviews);
+
+    const reviewForm = document.querySelector('#reviewForm');
+    reviewForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const nameInput = document.querySelector('#name');
+      const reviewInput = document.querySelector('#review');
+
+      const review = {
+        id: restaurant.id,
+        name: reviewForm.name.value,
+        review: reviewForm.review.value,
+      };
+
+      try {
+        const updateCustomerReviews = await RestaurantDataSource.addReview(review);
+        if (updateCustomerReviews) {
+          this._renderCustomerReviews(updateCustomerReviews);
+          nameInput.value = '';
+          reviewInput.value = '';
+
+          const offlineMessage = document.querySelector('#offlineMessage');
+          if (offlineMessage) {
+            // eslint-disable-next-line no-alert
+            alert('Your review will be sent when you are online');
+          }
+          reviewForm.reset();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    });
+  },
+
+  _renderCustomerReviews(customerReviews) {
+    const reviewContainer = document.querySelector('.restaurant-detail__content__review');
+    reviewContainer.innerHTML = '';
+    customerReviews.forEach((review) => {
+      reviewContainer.innerHTML += `
+      <div class="restaurant-detail__content__review__item">
+      <p class="restaurant-detail__content__review__item__name">
+        ${review.name} - <span class="text-date">${review.date}</span> <br>
+        "${review.review}"
+      </p>
+    </div>
+      `;
     });
   },
 };

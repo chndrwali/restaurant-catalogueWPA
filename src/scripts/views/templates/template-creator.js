@@ -1,90 +1,103 @@
-import CONFIG from '../../globals/config.js';
+/* eslint-disable max-len */
+import CONFIG from '../../globals/config';
 
-const createRestoItemTemplate = (resto) => `
-  <div class="resto-item">
-    <div class="resto-item__header">
-      <img class="resto-item__header__poster lazyload" 
-           data-src="${resto.pictureId ? CONFIG.BASE_IMAGE_URL + resto.pictureId : 'https://picsum.photos/id/666/800/450?grayscale'}"
-           data-size="auto">
-      <div class="resto-item__header__rating">
-        <p>⭐️<span class="resto-item__header__rating__score">${resto.rating}</span></p>
-      </div>
-    </div>
-    <div class="resto-item__content">
-      <h3><a href="/#/detail/${resto.id}">${resto.name}</a></h3>
-      <p>${resto.description}</p>
-  </div>
+const createRestaurantDetailTemplate = (restaurant) => `
+   <div class="restaurant-detail">
+       <div class="restaurant-breadcrumb">
+           <a href="#/home" class="breadcrumb-link">
+               <i class="fa fa-arrow-left"></i>
+           </a>
+           <span> > </span>
+           <span class="breadcrumb-text">${restaurant.name}</span>
+       </div>
+       <div class="restaurant-header">
+           <img data-src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" class="restaurant-detail__header__poster lazyload">
+       </div>
+       <div class="restaurant-info">
+           <h2><span>${restaurant.name}</span></h2>
+           <p><span class="rating-icon">Rating: ${restaurant.rating}</span></p>
+           <p><span class="address-icon">Alamat: </span>${restaurant.address}, ${restaurant.city}</p>
+           <p><span class="categories-icon">Kota: </span>${restaurant.categories.map((category) => category.name).join(', ')}</p>
+       </div>
+       <div class="restaurant-information">
+           <h2><span>Informasi</span></h2>
+           <div class="menu-section">
+               <h3><span>Menu</span></h3>
+               <p><span class="menu-label">Makanan: </span>${restaurant.menus.foods.map((food) => food.name).join(', ')}</p>
+               <p><span class="menu-label">Minuman: </span>${restaurant.menus.drinks.map((drink) => drink.name).join(', ')}</p>
+           </div>
+           <div class="description-section">
+               <h3><span>Deskripsi</span></h3>
+               <p class="restaurant-description">${restaurant.description}</p>
+           </div>
+           <div class="reviews-section">
+               <h3><span>Ulasan Customer</span></h3>
+               <div class="customer-reviews restaurant-detail__content__review">
+                  
+               </div>
+           </div>
+           <div id="formReview" class="review-form-section">
+               <h3 class="review-form-header"><span>Tulis Ulasan</span></h3>
+               <form id="reviewForm" class="review-form">
+               <div class="reviews-form-field">
+               <label class="reviews-form-label" for="name">Nama Kamu</label>
+               <input class="reviews-form-input" type="text" id="name" name="name" placeholder="Your name..." required>
+           </div>
+           <div class="reviews-form-field">
+               <label class="reviews-form-label" for="review">Beri Pengalaman Kamu</label>
+               <input class="reviews-form-input" type="text" id="review" name="review" placeholder="Your Review" required>
+           </div>
+           <button class="reviews-form-submit" type="submit">Kirim Ulasan</button>
+           <div id="offlineMessage"></div>
+               </form>
+           </div>
+       </div>
+   </div>
 `;
 
-const createDetailRestoTemplate = (resto) => `
-<div class="resto_info2" aria-label="${resto.name} detail">
-    <h2 class="resto_name">${resto.name}</h2>
-    <div class="img-detail">
-        <img src="${CONFIG.BASE_IMAGE_URL + resto.pictureId}" alt="gambar ${resto.name}" crossorigin="anonymous">
-    </div>
-    <div class="additional-info">
-        <p>
-            <span id="map-icon">📍</span>
-            ${resto.address}, ${resto.city}
-            <br>
-            <span id="rate-icon" class="resto-item__header__rating__score">⭐️</span>
-            ${resto.rating}
-        </p>
-    </div>
-    <h3 id="description-title">Deskripsi</h3>
-    <p class="description-detail">${resto.description} minutes</p>
-    <div class="menu-resto">
-        <h3>Menu</h3>
-        <div class="menu-content">
-            <ul class="foods">
-                <h4>Makanan</h4>
-                ${resto.menus.foods.map((food) => `<li> ${food.name}</li>`).join('')}
-            </ul>
-
-            <ul class="drink">
-                <h4>Minuman</h4>
-                ${resto.menus.drinks.map((food) => `<li> ${food.name}</li>`).join('')}
-            </ul>
-        </div>
-    </div>
-</div>
+const createRestaurantItemTemplate = (restaurant) => `
+   <div class="restaurant-card">
+       <div class="restaurant-info">
+           <img class="restaurant-image lazyload" alt="${restaurant.name}" data-src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}">
+           <div class="restaurant-city">${restaurant.city}</div>
+       </div>
+       <div class="restaurant-add">
+           <h3 class="restaurant-name">${restaurant.name}</h3>
+           <div class="restaurant-rating">
+               Rating : ${restaurant.rating}</span>
+           </div>
+           <p class="restaurant-description">${restaurant.description}</p>
+           <div class="see-detail-link">
+               <a href="${`/#/detail/${restaurant.id}`}">See Detail</a>
+           </div>
+       </div>
+   </div>
 `;
 
 const createReviewTemplate = (review) => `
-<div class="review">
-    <p>
+<div class="reviews-section">
+    <h3><span>Ulasan Customer</span></h3>
+    <div class="customer-reviews">
+        <p>
         <span class="name"> 🧔🏻${review.name} </span> &bull;
         <span class="date">${review.date}</span>
-    </p>
-    <p> 💬 ${review.review}</p>
+        </p>
+        <p> 💬 ${review.review}</p>
 </div>
 `;
 
-const createReviewFormTemplate = () => `<form class="form-review" id="form-review">
-    <h3>Add Your Review</h3>
-    <div class="form-field">
-        <label for="name">Name</label>
-        <input id="inputName" type="text" aria-label="name" class="form-control" placeholder="Your Name...">
-    </div>
-    <div class="form-field">
-        <label for="review">Review</label>
-        <textarea id="inputReview" class="form-control" aria-label="review" placeholder="Your Review..."></textarea>
-        <input type="hidden" id="date" name="tanggal" value="">
-    </div>
-    <button id="submitReview" type="submit" class="submitReview">Submit</button>
-    </form>
-`;
-
-const createLikeRestoButtonTemplate = () => `
+const createLikeRestaurantButtonTemplate = () => `
   <button aria-label="like this restaurant" id="likeButton" class="like">
-    <i class="fa fa-heart-o" aria-hidden="true"></i>
+     <i class="fas fa-thumbs-down" aria-hidden="true"></i>
   </button>
 `;
 
-const createUnlikeRestoButtonTemplate = () => `
+const createUnlikeRestaurantButtonTemplate = () => `
   <button aria-label="unlike this restaurant" id="likeButton" class="like">
-    <i class="fa fa-heart" aria-hidden="true"></i>
+    <i class="fas fa-thumbs-up" aria-hidden="true"></i>
   </button>
 `;
 
-export { createRestoItemTemplate, createDetailRestoTemplate, createReviewTemplate, createReviewFormTemplate, createLikeRestoButtonTemplate, createUnlikeRestoButtonTemplate };
+export {
+  createRestaurantDetailTemplate, createRestaurantItemTemplate, createReviewTemplate, createLikeRestaurantButtonTemplate, createUnlikeRestaurantButtonTemplate,
+};
